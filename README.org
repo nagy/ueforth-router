@@ -1,0 +1,23 @@
+Project status: Unfinished, but working
+
+This implements a message passing router for [[https://github.com/flagxor/ueforth][ueforth]].
+
+* Design
+
+In memory resides a routing table with entries of the structure =from=, =to=, =xt=.
+When a new message arrives, the decision where to route, meaning which execution context (xt) to invoke, is based on this table.
+
+An example implementation for an execution context where the content of the message is evaluated and sent back is provided. Also an example for messages arriving from [[https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/network/esp_now.html][ESP-NOW]] is provided.
+
+Depends on a fork of ueforth, https://github.com/nagy/ueforth/tree/nagy/kernel.
+
+* TODOs
+
+- remove initialisation code, just provide words. Currently, the code has some WiFi login code which should be removed.
+- make it less esp32 specific. Support more abstract implementations of message handlers.
+- support the ueforth-provided [[https://github.com/flagxor/ueforth/blob/main/common/streams.fs][streams]] vocabulary.
+
+
+* License
+
+[[./LICENSE][AGPL-3.0]]
